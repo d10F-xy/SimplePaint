@@ -55,7 +55,7 @@
 ## 실행 화면 (과제4)
 - 4단계 코드의 실행 스크린샷
 
-![실행화면](img/screenshot-4.png)
+![실행화면](img/scrs4.png)
 
 - 구현한 내용 (위 그림 참조)
 	- 외부 이미지 파일 열기 : OpenFileDialog를 이용하여 PNG, JPG, BMP, GIF 파일 로드
