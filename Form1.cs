@@ -50,6 +50,9 @@
             trbLineWidth.Maximum = 10; // 최대값
             trbLineWidth.Value = 2;
             trbLineWidth.ValueChanged += trbLineWidth_ValueChanged;
+
+            // 파일 저장 버튼 이벤트 연결
+            btnSaveFile.Click += btnSaveFile_Click;
         }
 
         private void picCanvas_MouseDown(object sender, MouseEventArgs e)
@@ -159,6 +162,41 @@
         private void trbLineWidth_ValueChanged(object sender, EventArgs e)
         {
             currentLineWidth = trbLineWidth.Value;
+        }
+
+        private void btnSaveFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "그림을 저장하세요";
+            saveFileDialog.Filter = "PNG 파일 (*.png)|*.png|JPG 파일 (*.jpg)|*.jpg|BMP 파일 (*.bmp)|*.bmp";
+            saveFileDialog.DefaultExt = "png";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                try
+                {
+                    ImageFormat imageFormat = GetImageFormat(filePath);
+                    canvasBitmap.Save(filePath, imageFormat);
+                    MessageBox.Show("이미지가 저장되었습니다!", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"저장 중 오류가 발생했습니다:\n{ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private ImageFormat GetImageFormat(string filePath)
+        {
+            string extension = System.IO.Path.GetExtension(filePath).ToLower();
+            return extension switch
+            {
+                ".png" => ImageFormat.Png,
+                ".jpg" => ImageFormat.Jpeg,
+                ".bmp" => ImageFormat.Bmp,
+                _ => ImageFormat.Png
+            };
         }
     }
 }
