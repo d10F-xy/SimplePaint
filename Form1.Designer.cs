@@ -39,11 +39,13 @@
             trbLineWidth = new TrackBar();
             btnOpenFile = new Button();
             btnSaveFile = new Button();
+            panelCanvas = new Panel();
             picCanvas = new PictureBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trbLineWidth).BeginInit();
+            panelCanvas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCanvas).BeginInit();
             SuspendLayout();
             // 
@@ -166,10 +168,19 @@
             btnSaveFile.Text = "저장";
             btnSaveFile.UseVisualStyleBackColor = false;
             // 
+            // panelCanvas
+            // 
+            panelCanvas.AutoScroll = true;
+            panelCanvas.BorderStyle = BorderStyle.FixedSingle;
+            panelCanvas.Controls.Add(picCanvas);
+            panelCanvas.Location = new Point(33, 203);
+            panelCanvas.Name = "panelCanvas";
+            panelCanvas.Size = new Size(725, 375);
+            panelCanvas.TabIndex = 4;
+            // 
             // picCanvas
             // 
-            picCanvas.BorderStyle = BorderStyle.FixedSingle;
-            picCanvas.Location = new Point(33, 203);
+            picCanvas.Location = new Point(0, 0);
             picCanvas.Name = "picCanvas";
             picCanvas.Size = new Size(725, 375);
             picCanvas.TabIndex = 3;
@@ -184,7 +195,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 590);
-            Controls.Add(picCanvas);
+            Controls.Add(panelCanvas);
             Controls.Add(btnSaveFile);
             Controls.Add(btnOpenFile);
             Controls.Add(groupBox3);
@@ -198,6 +209,7 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trbLineWidth).EndInit();
+            panelCanvas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCanvas).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -216,6 +228,7 @@
         private TrackBar trbLineWidth;
         private Button btnOpenFile;
         private Button btnSaveFile;
+        private Panel panelCanvas;
         private PictureBox picCanvas;
     }
 }
